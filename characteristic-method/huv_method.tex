@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+\usepackage[landscape,margin=0.5in]{geometry}
+\usepackage{amsmath}
+
+\begin{document}
+
+\begin{center}
+    \large \textsl{Ken Sible | August 6, 2018}
+\end{center}
+\noindent\rule{\textwidth}{1pt}
+\begin{equation*}
+    \Psi_{uv}(u_i,v_j)=\frac{\Psi(u_{i+1},v_{j+1})-\Psi(u_{i+1},v_j)-\Psi(u_i,v_{j+1})+\Psi(u_i,v_j)}{\Delta u\Delta v}+O(\Delta u,\Delta v)
+\end{equation*}
+\begin{equation*}
+    \frac{\partial^n}{\partial u^n}\frac{\partial^m}{\partial v^m}\Psi(u_i,v_j)\rightarrow\Psi^{(n,m)}_{i,j}\Rightarrow\Psi^{(1,1)}_{i,j}=\frac{\Psi_{i+1,j+1}-\Psi_{i+1,j}-\Psi_{i,j+1}+\Psi_{i,j}}{\Delta u\Delta v}+O(\Delta u,\Delta v)
+\end{equation*}
+\noindent\rule{\textwidth}{1pt}
+\begin{align*}
+    \frac{\Psi_{i+1,j+1}-\Psi_{i+1,j}-\Psi_{i,j+1}+\Psi_{i,j}}{\Delta u\Delta v}&=\Psi^{(1,1)}_{i,j}+\frac{1}{2}\left[\Psi^{(2,1)}_{i,j}\Delta u+\Psi^{(1,2)}_{i,j}\Delta v\right]+\frac{1}{6}\left[\Psi^{(3,1)}_{i,j}\Delta u^2+\Psi^{(2,2)}_{i,j}\Delta u\Delta v+\Psi^{(1,3)}_{i,j}\Delta v^2\right]+\ldots\\\\
+    \frac{\Psi_{i+2,j+2}-\Psi_{i+2,j}-\Psi_{i,j+2}+\Psi_{i,j}}{(2\Delta u)(2\Delta v)}&=\Psi^{(1,1)}_{i,j}+\frac{1}{2}\left[\Psi^{(2,1)}_{i,j}(2\Delta u)+\Psi^{(1,2)}_{i,j}(2\Delta v)\right]+\frac{1}{6}\left[\Psi^{(3,1)}_{i,j}(2\Delta u)^2+\Psi^{(2,2)}_{i,j}(2\Delta u)(2\Delta v)+\Psi^{(1,3)}_{i,j}(2\Delta v)^2\right]+\ldots
+\end{align*}
+\begin{equation*}
+    \Psi^{(1,1)}_{i,j}=\frac{8(\Psi_{i+1,j+1}-\Psi_{i+1,j}-\Psi_{i,j+1}+\Psi_{i,j})-(\Psi_{i+2,j+2}-\Psi_{i+2,j}-\Psi_{i,j+2}+\Psi_{i,j})}{4\Delta u\Delta v}+O(\Delta u^2,\Delta v^2, \Delta u\Delta v)
+\end{equation*}
+\noindent\rule{\textwidth}{1pt}
+\begin{equation*}
+    -4\Psi_{uv}=V_l(r)\Psi
+\end{equation*}
+\begin{equation*}
+    8(\Psi_{i+1,j+1}-\Psi_{i+1,j}-\Psi_{i,j+1}+\Psi_{i,j})-(\Psi_{i+2,j+2}-\Psi_{i+2,j}-\Psi_{i,j+2}+\Psi_{i,j})=-\Delta u\Delta vV_l(r_c)\Psi_{i,j}
+\end{equation*}
+\begin{equation*}
+    \Psi_{i+2,j+2}=8(\Psi_{i+1,j+1}-\Psi_{i+1,j}-\Psi_{i,j+1}+\Psi_{i,j})+(\Psi_{i+2,j}+\Psi_{i,j+2}-\Psi_{i,j})+\Delta u\Delta vV_l(r_c)\Psi_{i,j}
+\end{equation*}
+\begin{equation*}
+    \Psi_{ij}\rightarrow\Psi'_{ij}=\Psi_{i+1,j}+\Psi_{i,j+1}-\frac{1}{2}\left[\Psi_{i+2,j}+\Psi_{i,j+2}\right]+O(\Delta u^2,\Delta v^2)
+\end{equation*}
+\noindent\rule{\textwidth}{1pt}
+\begin{equation*}
+    \boxed{\Psi_{i+2,j+2}=8(\Psi_{i+1,j+1}-\Psi_{i+1,j}-\Psi_{i,j+1}+\Psi_{i,j})+(\Psi_{i+2,j}+\Psi_{i,j+2}-\Psi_{i,j})+\Delta u\Delta vV_l(r_c)\Psi'_{i,j}}
+\end{equation*} % O(\Delta u^3\Delta v,\Delta u\Delta v^3, \Delta u^2\Delta v^2)
+% \begin{equation*}
+%     \Psi^{(1,1)}_{i,j}=\frac{8\Psi_{i+1,j+1}-8\Psi_{i+1,j}-8\Psi_{i,j+1}+7\Psi_{i,j}-\Psi_{i+2,j+2}+\Psi_{i+2,j}+\Psi_{i,j+2}}{4\Delta u\Delta v}+O(\Delta u^2,\Delta v^2, \Delta u\Delta v)
+% \end{equation*}
+% \begin{equation*}
+%     \Psi_{i+2,j+2}=\Psi_{i,j}+2\Psi^{(1,0)}_{i,j}\Delta u+2\Psi^{(0,1)}_{i,j}\Delta v+O(\Delta u^2,\Delta v^2, \Delta u\Delta v)
+% \end{equation*}
+% \begin{equation*}
+%     \Psi_{i+2,j+2}=\Psi_{i,j}+\left[\frac{2(\Psi_{i+1,j}-\Psi_{i,j})}{\Delta u}+O(\Delta u)\right]\Delta u+\left[\frac{2(\Psi_{i,j+1}-\Psi_{i,j})}{\Delta v}+O(\Delta v)\right]\Delta v+O(\Delta u^2,\Delta v^2, \Delta u\Delta v)
+% \end{equation*}
+% \begin{equation*}
+%     \Psi_{i+2,j+2}=\Psi_{i,j}+2(\Psi_{i+1,j}-\Psi_{i,j})+O(\Delta u^2)+2(\Psi_{i,j+1}-\Psi_{i,j})+O(\Delta v^2)+O(\Delta u^2,\Delta v^2, \Delta u\Delta v)
+% \end{equation*}
+% \begin{equation*}
+%     \Psi_{i+2,j+2}=2\Psi_{i+1,j}+2\Psi_{i,j+1}-3\Psi_{i,j}+O(\Delta u^2,\Delta v^2, \Delta u\Delta v)
+% \end{equation*}
+    % \begin{align*}
+    %     \frac{\Psi_{i+1,j}-\Psi_{i,j}}{\Delta u}&=\Psi^{(1,0)}_{i,j}+\frac{1}{2}\Psi^{(2,0)}_{i,j}\Delta u+\frac{1}{6}\Psi^{(3,0)}_{i,j}\Delta u^2+\ldots\\
+    %     \frac{\Psi_{i+2,j}-\Psi_{i,j}}{2\Delta u}&=\Psi^{(1,0)}_{i,j}+\frac{1}{2}\Psi^{(2,0)}_{i,j}(2\Delta u)+\frac{1}{6}\Psi^{(3,0)}_{i,j}(2\Delta u)^2+\ldots
+    % \end{align*}
+    % \begin{equation*}
+    %     \Psi^{(1,0)}_{i,j}=\frac{4(\Psi_{i+1,j}-\Psi_{i,j})-(\Psi_{i+2,j}-\Psi_{i,j})}{2\Delta u}+O(\Delta u^2)=\frac{-\Psi_{i+2,j}+4\Psi_{i+1,j}-3\Psi_{i,j}}{2\Delta u}+O(\Delta u^2)
+    % \end{equation*}
+
+\end{document}

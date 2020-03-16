@@ -1,0 +1,67 @@
+\documentclass[12pt]{article}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath}
+
+% \title{Research Finite Difference}
+% \author{Ken Sible}
+% \date{July 2018}
+
+\begin{document}
+
+% \maketitle
+
+\begin{center}
+    \large \textsl{Ken Sible | July 25, 2018}
+\end{center}
+\noindent\rule{\textwidth}{1pt}
+\begin{equation*}
+    f(\textbf{x})=f(\textbf{a})+\sum\limits^n_{i=1}\frac{\partial f}{\partial x_i}\bigg|_{\textbf{x}=\textbf{a}}(x_i-a_i)+\frac{1}{2}\sum\limits^n_{i=1}\sum\limits^n_{j=1}\frac{\partial^2 f}{\partial x_ix_j}\bigg|_{\textbf{x}=\textbf{a}}(x_i-a_i)(x_j-a_j)+\ldots
+\end{equation*}
+\noindent\rule{\textwidth}{1pt}
+\begin{align*}
+    \Psi(u_{i+1},v_j)&=\Psi(u_i,v_j)+\Psi_u(u_i,v_j)\Delta u+\frac{1}{2}\Psi_{uu}(u_i,v_j)\Delta u^2+\ldots\\
+    \Psi(u_i,v_{j+1})&=\Psi(u_i,v_j)+\Psi_v(u_i,v_j)\Delta v+\frac{1}{2}\Psi_{vv}(u_i,v_j)\Delta v^2+\ldots\\
+    \Psi(u_{i+1},v_{j+1})&=\Psi(u_i,v_j)+\Psi_u(u_i,v_j)\Delta u+\Psi_v(u_i,v_j)\Delta v\\
+    &+\frac{1}{2}\left[\Psi_{uu}(u_i,v_j)\Delta u^2+2\Psi_{uv}(u_i,v_j)\Delta u\Delta v+\Psi_{vv}(u_i,v_j)\Delta v^2\right]+\ldots
+    % \Psi(u_{i-1},v_{j-1})&=\Psi(u_i,v_j)-\Psi_u(u_i,v_j)\Delta u-\Psi_v(u_i,v_j)\Delta v\\
+    % &+\frac{1}{2}\left[\Psi_{uu}(u_i,v_j)\Delta u^2+2\Psi_{uv}(u_i,v_j)\Delta u\Delta v+\Psi_{vv}(u_i,v_j)\Delta v^2\right]+\ldots\\
+    % \Psi(u_{i+2},v_{j+2})&=\Psi(u_i,v_j)+\Psi_u(u_i,v_j)(2\Delta u)+\Psi_v(u_i,v_j)(2\Delta v)\\
+    % &+\frac{1}{2}\left[\Psi_{uu}(u_i,v_j)(2\Delta u)^2+2\Psi_{uv}(u_i,v_j(2\Delta u)(2\Delta v)+\Psi_{vv}(u_i,v_j)(2\Delta v)^2\right]+\ldots
+\end{align*}
+\noindent\rule{\textwidth}{1pt}
+\begin{equation*}
+    \Psi(u_{i+1},v_{j+1})-\Psi(u_{i+1},v_j)-\Psi(u_i,v_{j+1})=\Psi_{uv}(u_i,v_j)\Delta u\Delta v-\Psi(u_i,v_j)+\ldots
+\end{equation*}
+\begin{equation*}
+    \Psi_{uv}(u_i,v_j)=\frac{\Psi(u_{i+1},v_{j+1})-\Psi(u_{i+1},v_j)-\Psi(u_i,v_{j+1})+\Psi(u_i,v_j)}{\Delta u\Delta v}+O(\Delta u,\Delta v)
+\end{equation*}
+\noindent\rule{\textwidth}{1pt}
+\begin{equation*}
+    -4\Psi_{uv}=V_l(r)\Psi
+\end{equation*}
+\begin{equation*}
+    \Psi(u_{i+1},v_{j+1})-\Psi(u_{i+1},v_j)-\Psi(u_i,v_{j+1})+\Psi(u_i,v_j)=-\frac{\Delta u\Delta v}{4}V_l(r)\Psi(u_i,v_j)
+\end{equation*}
+\begin{equation*}
+    \Psi(u_{i+1},v_{j+1})=\Psi(u_{i+1},v_j)+\Psi(u_i,v_{j+1})-\Psi(u_i,v_j)-\frac{\Delta u\Delta v}{4}V_l(r)\Psi(u_i,v_j)
+\end{equation*}
+\begin{equation*}
+  \Psi(u_i,v_j)\rightarrow\frac{1}{2}\left[\Psi(u_{i+1},v_j)+\Psi(u_i,v_{j+1})\right]+O(\Delta u,\Delta v)
+\end{equation*}
+\noindent\rule{\textwidth}{1pt}
+\begin{equation*}
+    \Psi(u_{i+1},v_{j+1})=\Psi(u_{i+1},v_j)+\Psi(u_i,v_{j+1})-\Psi(u_i,v_j)-\frac{\Delta u\Delta v}{8}V_l(r_c)\left[\Psi(u_{i+1},v_j)+\Psi(u_i,v_{j+1})\right]
+\end{equation*}
+\begin{equation*}
+    \boxed{\Psi_N=\Psi_W+\Psi_E-\Psi_S-\frac{\Delta u\Delta v}{8}V_l(r_c)\left[\Psi_W+\Psi_E\right]+O(\Delta u^2\Delta v,\Delta u\Delta v^2)}
+\end{equation*}
+% \begin{equation*}
+%     \Psi(u_{i+1},v_{j+1})+\Psi(u_{i-1},v_{j-1})=\Psi(u_i,v_j)-3\Psi_{uu}(u_i,v_j)\Delta u^2-7\Psi_{uv}(u_i,v_j)\Delta u\Delta v-3\Psi_{vv}(u_i,v_j)\Delta v^2+\ldots
+%     % 2\Psi(u_{i+1},v_{j+1})-\Psi(u_{i+2},v_{j+2})=\Psi(u_i,v_j)-3\Psi_{uu}(u_i,v_j)\Delta u^2-7\Psi_{uv}(u_i,v_j)\Delta u\Delta v-3\Psi_{vv}(u_i,v_j)\Delta v^2+\ldots
+% \end{equation*}
+% \begin{align*}
+%     \Psi_{uv}(u_i,v_j)&=\frac{\Psi(u_{i+2},v_{j+2})-2\Psi(u_{i+1},v_{j+1})+\Psi(u_i,v_j)}{7\Delta u\Delta v}+O(\Delta u^2, \Delta v^2)\\
+%     \Psi_{uv}(u_i,v_j)&=\frac{\Psi(u_i,v_j)-2\Psi(u_{i-1},v_{j-1})+\Psi(u_{i-2},v_{j-2})}{7\Delta u\Delta v}+O(\Delta u^2, \Delta v^2)\\
+% \end{align*}
+
+\end{document}
